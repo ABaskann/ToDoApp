@@ -1,4 +1,4 @@
-let id_daily = 1
+let id_daily = 1;
 let id_important = 1;
 let id_most_important = 1;
 takeTask();
@@ -9,8 +9,7 @@ function takeTask(){
     buttonDOM.addEventListener("click",addButton);    
 }
 
-function addButton(){       
-    
+function addButton(){           
     event.preventDefault()  
     createTable()     
 }
@@ -22,25 +21,21 @@ function createTable(){
     let table3 = document.querySelector("#table3")
     let enteredTaskDOM = document.querySelector("#enteredTask")
     let selectDOM = document.querySelector("#select");     
-    if(enteredTaskDOM.value.length ==0){
+    if(enteredTaskDOM.value.length == 0){
         window.alert("Please enter your task!!!")
-    }else{
-         
+    }else{         
         if(selectDOM.value==1){
-            createTask(table1,id_daily,enteredTaskDOM.value,"table-danger")
-
+            createTask(table1,id_daily,enteredTaskDOM.value,"table-danger","first")
         }else if(selectDOM.value==2){
-
-            createTask(table2,id_important,enteredTaskDOM.value,"table-warning")            
-            
+            createTask(table2,id_important,enteredTaskDOM.value,"table-warning","second")                       
         }else{
-            createTask(table3,id_most_important,enteredTaskDOM.value,"table-info")
+            createTask(table3,id_most_important,enteredTaskDOM.value,"table-info","third")
         }          
-        enteredTaskDOM.value=""  
+        enteredTaskDOM.value="";
              
     }     
 }
-function createTask(table,id,task,color){
+function createTask(table,id,task,color,which){
     table.classList.remove("invisible");
     table.classList.add("visible");
     let row1 = table.insertRow();
@@ -55,9 +50,15 @@ function createTask(table,id,task,color){
     // row1.appendChild(cel13);
     //console.log(cel13)        
     cel11.innerHTML = id;
-    cel12.innerHTML = task;  
-    id++;
-    console.log(id)    
+    cel12.innerHTML = task;
+    console.log(which);
+    if(which == "first"){
+        id_daily++
+    } else if(which == "second"){
+        id_important++
+    }else if(which == "third"){
+        id_most_important++
+    }
     //onClicked()
     
 }
