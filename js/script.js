@@ -31,13 +31,11 @@ function createTable(){
 
         }else if(selectDOM.value==2){
 
-            createTask(table2,id_important,enteredTaskDOM.value,"table-warning")
-            
+            createTask(table2,id_important,enteredTaskDOM.value,"table-warning")            
             
         }else{
             createTask(table3,id_most_important,enteredTaskDOM.value,"table-info")
-        }  
-        
+        }          
         enteredTaskDOM.value=""  
              
     }     
@@ -58,7 +56,7 @@ function createTask(table,id,task,color){
     //console.log(cel13)        
     cel11.innerHTML = id;
     cel12.innerHTML = task;  
-    id+=1
+    id++;
     console.log(id)    
     //onClicked()
     
