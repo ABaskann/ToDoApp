@@ -1,6 +1,7 @@
 let id_daily = 1;
 let id_important = 1;
 let id_most_important = 1;
+
 takeTask();
 
 
@@ -41,7 +42,7 @@ function createTable(){
     }     
 }
 function createTask(table,id,task,color,which){
-    table.classList.remove("invisible");
+     table.classList.remove("invisible");
      table.classList.add("visible");
      let trElement = document.createElement('tr');
      let tbodyElement = document.createElement('tbody');
@@ -51,8 +52,8 @@ function createTask(table,id,task,color,which){
      let checkbox = document.createElement("INPUT")
      checkbox.setAttribute("id","checkbox");
      checkbox.setAttribute("type","checkbox");
-     checkbox.setAttribute("onclick","onClicked");
-     checkbox.classList.add("form-check-input","mt-2" );
+     checkbox.setAttribute("onchange","onClicked(checkbox)");
+     checkbox.classList.add("form-check-input");
      trElement.classList.add(color)
      trElement.appendChild(id_element);
      trElement.appendChild(task_element);
@@ -70,12 +71,12 @@ function createTask(table,id,task,color,which){
         id_most_important++
      }    
      
-     onClicked(checkbox);
-     
+     onClicked(checkbox)
+        
 }
 function onClicked(checkbox){
     if(checkbox.checked==true){
-        console.log("basıldı")
+        
 
      }else{
         console.log("basılmadı")
