@@ -20,7 +20,8 @@ function createTable(){
     let table2 = document.querySelector("#table2")
     let table3 = document.querySelector("#table3")
     let enteredTaskDOM = document.querySelector("#enteredTask")
-    let selectDOM = document.querySelector("#select");     
+    let selectDOM = document.querySelector("#select");  
+
     if(enteredTaskDOM.value.length == 0){
         window.alert("Please enter your task!!!")
     }else{         
@@ -32,47 +33,52 @@ function createTable(){
             createTask(table3,id_most_important,enteredTaskDOM.value,"table-info","third")
         }          
         enteredTaskDOM.value="";
-             
+        
+        
+        
+      
+        
     }     
 }
 function createTask(table,id,task,color,which){
     table.classList.remove("invisible");
-    table.classList.add("visible");
-    let row1 = table.insertRow();
-    row1.classList.add(color)       
-    let cel11 = row1.insertCell();
-    let cel12 = row1.insertCell();    
-    // let cel13 = document.createElement("INPUT");  
-    // cel13.setAttribute("id","checkbox");
-    // cel13.setAttribute("type","checkbox");
-    // cel13.setAttribute("onclick","onClicked()");
-    // cel13.classList.add("form-check-input","mt-2" );
-    // row1.appendChild(cel13);
-    //console.log(cel13)        
-    cel11.innerHTML = id;
-    cel12.innerHTML = task;
-    console.log(which);
-    if(which == "first"){
+     table.classList.add("visible");
+     let trElement = document.createElement('tr');
+     let tbodyElement = document.createElement('tbody');
+     let id_element = document.createElement('td');
+     let task_element = document.createElement('td');
+     let done_element = document.createElement('td');
+     let checkbox = document.createElement("INPUT")
+     checkbox.setAttribute("id","checkbox");
+     checkbox.setAttribute("type","checkbox");
+     checkbox.setAttribute("onclick","onClicked");
+     checkbox.classList.add("form-check-input","mt-2" );
+     trElement.classList.add(color)
+     trElement.appendChild(id_element);
+     trElement.appendChild(task_element);
+     trElement.appendChild(done_element);
+     done_element.appendChild(checkbox);
+     tbodyElement.appendChild(trElement);
+     table.appendChild(tbodyElement); 
+     id_element.innerHTML = id
+     task_element.innerHTML = task; 
+     if(which == "first"){
         id_daily++
-    } else if(which == "second"){
+     } else if(which == "second"){
         id_important++
-    }else if(which == "third"){
+     }else if(which == "third"){
         id_most_important++
-    }
-    //onClicked()
-    
+     }    
+     
+     onClicked(checkbox);
+     
 }
+function onClicked(checkbox){
+    if(checkbox.checked==true){
+        console.log("basıldı")
 
-
-// function onClicked(){
-//     let checkBox = document.querySelector("#checkbox");
-//     if(checkBox.checked==true){
-//         cel.classList.add("text-decoration-line-through")
-//         console.log("clicked")
-//     }else{
-//         cel.classList.remove("text-decoration-line-through")
-//     }   
-// }
-
-
+     }else{
+        console.log("basılmadı")
+     }
+ }
 
